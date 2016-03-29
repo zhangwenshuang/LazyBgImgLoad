@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>lazy demo</title>
+    <style>
+    body {
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    div.lazy {
+        display: block;
+        border: 1px solid #ddd;
+        margin: auto;
+        height: 600px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="img_box">
+    </div>
+    <script src="./LazyBgImgLoad.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+    ! function(window) {
+        function doTpl(relSrcs) {
+            var render = [];
+            for (var i = 0, len = relSrcs.length; i < len; i++) {
+                render.push('<div class="lazy" src="http://b.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=f4bb3deee71190ef01ae9ad9fe2bb12e/6a63f6246b600c33f6ca33cb1a4c510fd9f9a106.jpg" data-src="' + relSrcs[i] + '"></div>');
+            }
+            return render.join("");
+        }
+        var tsd = [
+            "http://img2.imgtn.bdimg.com/it/u=1457437487,655486635&fm=11&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1698945203,1066999821&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1017606633,46849118&fm=11&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2653308224,1709863547&fm=11&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=4236942158,2307642402&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2546610023,3120506294&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1589956140,1606448699&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=161888459,1712714238&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=2730523809,2825683527&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2033765348,1346395611&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1126380040,3366465233&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=3843979064,1483327667&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=4271053251,2424464488&fm=21&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=2468356536,2310768742&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=1301259139,2025033435&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=1691236866,2297927683&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2369131610,3459935083&fm=11&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=228196693,618638496&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=3342737063,3964532796&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=2965812645,1180239355&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=1941269544,4205169439&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1457437487,655486635&fm=11&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1698945203,1066999821&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1017606633,46849118&fm=11&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2653308224,1709863547&fm=11&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=4236942158,2307642402&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2546610023,3120506294&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1589956140,1606448699&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=161888459,1712714238&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=2730523809,2825683527&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2033765348,1346395611&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1126380040,3366465233&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=3843979064,1483327667&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=4271053251,2424464488&fm=21&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=2468356536,2310768742&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=1301259139,2025033435&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=1691236866,2297927683&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2369131610,3459935083&fm=11&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=228196693,618638496&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=3342737063,3964532796&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=2965812645,1180239355&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=1941269544,4205169439&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1457437487,655486635&fm=11&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1698945203,1066999821&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1017606633,46849118&fm=11&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2653308224,1709863547&fm=11&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=4236942158,2307642402&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2546610023,3120506294&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1589956140,1606448699&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=161888459,1712714238&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=2730523809,2825683527&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2033765348,1346395611&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1126380040,3366465233&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=3843979064,1483327667&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=4271053251,2424464488&fm=21&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=2468356536,2310768742&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=1301259139,2025033435&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=1691236866,2297927683&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2369131610,3459935083&fm=11&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=228196693,618638496&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=3342737063,3964532796&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=2965812645,1180239355&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=1941269544,4205169439&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1457437487,655486635&fm=11&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1698945203,1066999821&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1017606633,46849118&fm=11&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2653308224,1709863547&fm=11&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=4236942158,2307642402&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2546610023,3120506294&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1589956140,1606448699&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=161888459,1712714238&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=2730523809,2825683527&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2033765348,1346395611&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1126380040,3366465233&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=3843979064,1483327667&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=4271053251,2424464488&fm=21&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=2468356536,2310768742&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=1301259139,2025033435&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=1691236866,2297927683&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2369131610,3459935083&fm=11&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=228196693,618638496&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=3342737063,3964532796&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=2965812645,1180239355&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=1941269544,4205169439&fm=21&gp=0.jpg"
+        ];
+        document.getElementById("img_box").innerHTML = doTpl(tsd);
+    }(this);
+
+    var lazy = new LazyBgImgLoad({
+        type: "div",
+        eles: "div.lazy"
+    });
+    ! function(window) {
+        function doTpl(relSrcs) {
+            var render = [];
+            for (var i = 0, len = relSrcs.length; i < len; i++) {
+                render.push('<div class="lazy" src="http://b.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=f4bb3deee71190ef01ae9ad9fe2bb12e/6a63f6246b600c33f6ca33cb1a4c510fd9f9a106.jpg" data-src="' + relSrcs[i] + '" width="200" height="200"></div>');
+            }
+            return render.join("");
+        }
+        var tsd = [
+            "http://img2.imgtn.bdimg.com/it/u=1457437487,655486635&fm=11&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1698945203,1066999821&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1017606633,46849118&fm=11&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2653308224,1709863547&fm=11&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=4236942158,2307642402&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2546610023,3120506294&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1589956140,1606448699&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=161888459,1712714238&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=2730523809,2825683527&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2033765348,1346395611&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1126380040,3366465233&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=3843979064,1483327667&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=4271053251,2424464488&fm=21&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=2468356536,2310768742&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=1301259139,2025033435&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=1691236866,2297927683&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2369131610,3459935083&fm=11&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=228196693,618638496&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=3342737063,3964532796&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=2965812645,1180239355&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=1941269544,4205169439&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1457437487,655486635&fm=11&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1698945203,1066999821&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1017606633,46849118&fm=11&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2653308224,1709863547&fm=11&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=4236942158,2307642402&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2546610023,3120506294&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1589956140,1606448699&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=161888459,1712714238&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=2730523809,2825683527&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2033765348,1346395611&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1126380040,3366465233&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=3843979064,1483327667&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=4271053251,2424464488&fm=21&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=2468356536,2310768742&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=1301259139,2025033435&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=1691236866,2297927683&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2369131610,3459935083&fm=11&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=228196693,618638496&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=3342737063,3964532796&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=2965812645,1180239355&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=1941269544,4205169439&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1457437487,655486635&fm=11&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1698945203,1066999821&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1017606633,46849118&fm=11&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2653308224,1709863547&fm=11&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=4236942158,2307642402&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2546610023,3120506294&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1589956140,1606448699&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=161888459,1712714238&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=2730523809,2825683527&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2033765348,1346395611&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1126380040,3366465233&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=3843979064,1483327667&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=4271053251,2424464488&fm=21&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=2468356536,2310768742&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=1301259139,2025033435&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=1691236866,2297927683&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2369131610,3459935083&fm=11&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=228196693,618638496&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=3342737063,3964532796&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=2965812645,1180239355&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=1941269544,4205169439&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1457437487,655486635&fm=11&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=1698945203,1066999821&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1017606633,46849118&fm=11&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2653308224,1709863547&fm=11&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=4236942158,2307642402&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=2546610023,3120506294&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1589956140,1606448699&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=161888459,1712714238&fm=21&gp=0.jpg",
+            "http://img2.imgtn.bdimg.com/it/u=2730523809,2825683527&fm=11&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2033765348,1346395611&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=1126380040,3366465233&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=3843979064,1483327667&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=4271053251,2424464488&fm=21&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=2468356536,2310768742&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=1301259139,2025033435&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=1691236866,2297927683&fm=21&gp=0.jpg",
+            "http://img5.imgtn.bdimg.com/it/u=2369131610,3459935083&fm=11&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=228196693,618638496&fm=21&gp=0.jpg",
+            "http://img1.imgtn.bdimg.com/it/u=3342737063,3964532796&fm=21&gp=0.jpg",
+            "http://img4.imgtn.bdimg.com/it/u=2965812645,1180239355&fm=21&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=1941269544,4205169439&fm=21&gp=0.jpg"
+        ];
+        document.getElementById("img_box").innerHTML = doTpl(tsd);
+    }(this);
+    console.log("lazy");
+    console.log(lazy);
+    !!lazy && lazy.refresh();
+    </script>
+</body>
+
+</html>
