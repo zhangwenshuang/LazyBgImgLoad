@@ -1,4 +1,4 @@
-/* lazyload.js (c) 张文双
+/* LazyBgImgLoad.js (c) 张文双
  * MIT License (http://www.opensource.org/licenses/mit-license.html)
  *
  * expects a list of:  
